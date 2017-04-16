@@ -5,7 +5,7 @@ require 'digest'
 puts "Введите слово или фразу для шифрования:"
 phrase = STDIN.gets.chomp
 
-crypt_methods = ['MD5', 'SHA1']
+crypt_methods = ['MD5', 'SHA1', 'SHA2']
 
 puts "Каким способом зашифровать:"
 
@@ -16,8 +16,12 @@ end
 user_input = STDIN.gets.to_i
 
 case crypt_methods[user_input - 1]
-when crypt_methods[0] then puts Digest::MD5.hexdigest phrase
-when crypt_methods[1] then puts Digest::SHA1.hexdigest phrase
+when crypt_methods[0] then
+  puts Digest::MD5.hexdigest phrase
+when crypt_methods[1] then
+  puts Digest::SHA1.hexdigest phrase
+when crypt_methods[2] then
+  puts Digest::SHA2.hexdigest phrase
 else
   puts "Неизвестный метод шифрования"
 end
